@@ -1,0 +1,297 @@
+$primary-color: #ffff;
+$font-stack: 'Mulish', 'sans-serif';
+$font-default-size: 16px;
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+}
+@mixin flex-column {
+    display: flex;
+    flex-direction: column;
+}
+body {
+    margin: 0;
+    font-family: $font-stack;
+    color: $primary-color;
+    background-color: #0093E9;
+    background-image: linear-gradient(270deg, #0093E9 0%, #21c08b 100%);
+
+    a {
+        text-decoration: none;
+        color: $primary-color;
+    }
+}
+/* HEADER DE PLATZIVIDEO */
+.header {
+    width: 100%;
+    height: 80px;
+    background-color: #0093E9;
+    background-image: linear-gradient(270deg, #0093E9 0%, #21c08b 100%);
+    @include flex-center;
+    justify-content: space-between;
+}
+.header__img {
+    width: 200px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+/* MENU DE PERFIL DEL HEADER */
+.header__menu {
+    margin-right: 30px;
+    margin-bottom: 20px;
+
+    ul {
+        display: none;
+        list-style: none;
+        text-align: right;
+        padding: 0px;
+        position: absolute;
+        margin-right: 20px;
+    }
+
+    li {
+        margin: 10px 0px;
+        a:hover {
+            text-decoration: underline;
+        }
+    }
+}
+.header__menu:hover ul, ul:hover{
+    display: block;
+}
+.header__menu--profile {
+    margin-bottom: -20px;
+    margin-right: 8px;
+    @include flex-center;
+    cursor: pointer;
+
+    img {
+        margin-right: 8px;
+        width: 40px;
+    }
+
+    a {
+        margin: 0px;
+    }
+}
+
+/* BUSCADOR */
+.main {
+    height: 300px;
+    @include flex-center;
+    flex-direction: column;
+}
+.main__title {
+    font-size: 25px;
+}
+.main__title--big {
+    font-size: 64px;
+}
+.main .input {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 35px;
+    border: 2px solid $primary-color;
+    font-size: $font-default-size;
+    height: 50px;
+    outline: none;
+    padding: 0px 10px;
+    width: 70%;
+}
+::placeholder {
+    color: $primary-color;
+}
+
+.categories__title {
+    font-size: $font-default-size;
+    position: absolute;
+    padding-left: 30px;
+    width: 100%;
+}
+
+/* CARRUSEL */
+.carousel {
+    width: 100%;
+    overflow: scroll;
+    padding: 30px;
+    position: relative;
+}
+.carousel__container {
+    $primary-color-space: nowrap;
+    margin: 70px 0px;
+    padding-bottom: 10px; 
+}
+.carousel-item {
+    width: 200px;
+    height: 250px;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-right: 10px;
+    display: inline-block;
+    cursor: pointer;
+    transition: 450ms all;
+    transform-origin: center left;
+    position: relative;
+}
+.carousel-item:hover ~ .carousel-item {
+    transform: translate3d(100px, 0, 0);
+}
+.carousel__container:hover .carousel-item {
+    opacity: 0.3;
+}
+.carousel__container:hover .carousel-item:hover {
+    transform: scale(1.5);
+    opacity: 1;
+}
+.carousel-item__img {
+    height: 250px;
+    object-fit: cover;
+    width: 200px;
+}
+.carousel-item__details {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+    font-size: 10px;
+    opacity: 0;
+    padding: 10px;
+    position: absolute;
+    transition: 450ms opacity;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    @include flex-column;
+    justify-content: flex-end;
+
+    img {
+        height: 15px;
+    }
+
+    p {
+        color: $primary-color;
+        font-family: $font-stack;
+        margin: 0px;
+    }
+}
+.carousel-item__details:hover {
+    opacity: 1;
+}
+/* ESTILOS DEL SCROLL DEL CARROUSEL */
+::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+::-webkit-scrollbar {
+    width: 8px; 
+    height: 8px;   
+    background:rgba(255,255,255,.4);
+    border-radius: 4px;
+}
+::-webkit-scrollbar:hover {
+    background: #b3b3b3;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+::-webkit-scrollbar:hover:active {
+    background: #999;
+}
+/* FORMULARIO DE LOGIN Y REGISTRO*/
+.login {
+    @include flex-center;
+    justify-content: center;
+    margin: 0px auto;
+    min-height: calc(100vh - 200px);
+    padding: 0px, 30px;
+}
+.login__container {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid $primary-color;
+    border-radius: 40px;
+    @include flex-column;
+    justify-content: space-around;
+    padding: 60px 68px 40px;
+    min-height: 600px;
+    width: 300px;
+}
+.login__container--form {
+    @include flex-column;
+}
+.login__container--form label {
+    font-size: $font-default-size;
+}
+.input {
+    background-color: transparent;
+    border-top: 0px;
+    border-right: 0px;
+    border-left: 0px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.9);
+    font-size: $font-default-size;
+    height: 30px;
+    margin-bottom: 20px;
+    outline: none;
+    padding-left: 20px;
+    padding-bottom: 5px;
+}
+.button {
+    background-color: rgba(255, 255, 255, 0.3);
+    border: none;
+    border-radius: 20px;
+    color: $primary-color;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 10px;
+    letter-spacing: 1px;
+}
+.button:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+::placeholder {
+    color: $primary-color;
+}
+.login__container--remember {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.login__container--remember a:hover {
+    text-decoration: underline;
+}
+.login__container--social-media > div {
+    @include flex-center;
+    font-size: $font-default-size;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.login__container--social-media > div > img {
+    width: 30px;
+    margin-right: 10px;
+}
+.login__container--register {
+    font-size: $font-default-size;
+}
+/* FOOTER */
+.footer {
+    @include flex-center;
+    height: 100px;
+
+    a {
+        padding: 20px;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+}
+.login__container--sign-in {
+    text-align: center;
+}
+@media only screen and (max-width: 600px) {
+    .login__container {
+        background-color: transparent;
+        border: none;
+        padding: 0px;
+        width: 100%;
+    }
+    .footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
